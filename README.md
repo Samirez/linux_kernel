@@ -44,11 +44,19 @@ If files are missing, `grub-mkrescue` will fail with "file not found" errors. Us
 
 **Prerequisite:** WSL (Windows Subsystem for Linux) must be installed and configured with a Debian or Ubuntu distro.
 
-To enable WSL:
-1. Open **Settings** > **Apps** > **Optional features** (or search "Turn Windows features on or off")
-2. Enable **Windows Subsystem for Linux**
-3. Install a Linux distro: `wsl --install -d Debian` or `wsl --install -d Ubuntu`
-4. Verify: Run `wsl -l -v` in PowerShell
+**Quick setup:** Open PowerShell as **Administrator** and run:
+
+```powershell
+wsl --install -d Debian
+```
+
+If prompted to restart, do so. Then verify:
+
+```powershell
+wsl -l -v
+```
+
+If `wsl --install` is not available (older Windows 10 builds), see "Fallback for older Windows" below.
 
 Then run:
 
@@ -57,6 +65,14 @@ Then run:
 ```
 
 This PowerShell wrapper calls WSL to execute the Linux build script (`./build.sh`) in your WSL environment, assembles and links the kernel, and generates `kernel.iso`.
+
+### Fallback for older Windows
+
+If `wsl --install` is unavailable, manually enable WSL:
+1. Open **Settings** > **Apps** > **Optional features** (or search "Turn Windows features on or off")
+2. Enable **Windows Subsystem for Linux**
+3. Restart your computer
+4. Then run `wsl --install -d Debian` in PowerShell as Administrator
 
 ## Important
 
