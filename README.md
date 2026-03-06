@@ -58,7 +58,20 @@ wsl -l -v
 
 If `wsl --install` is not available (older Windows 10 builds), see "Fallback for older Windows" below.
 
-Then run:
+**Install build dependencies in WSL:** Launch the Debian WSL instance and install required packages:
+
+```bash
+wsl -e bash -lc "sudo apt-get update && sudo apt-get install -y nasm gcc grub-pc-bin xorriso"
+```
+
+Or manually in the WSL Debian shell:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y nasm gcc grub-pc-bin xorriso
+```
+
+Then run the build:
 
 ```powershell
 .\build.ps1
