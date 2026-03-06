@@ -14,10 +14,10 @@ void clear_screen(void)
 {
     int index = 0;
     /* there are 25 lines each of 80 columns;
-       each element takes 2 bytes */
-    while (index < 80 * 25 * 2) {
-            terminal_buffer[index] = ' ';
-            index += 2;
+       each element is an unsigned short combining character and attribute */
+    while (index < 80 * 25) {
+            terminal_buffer[index] = (unsigned short)((BLACK << 8) | ' ');
+            index++;
     }
 }
 
@@ -33,7 +33,6 @@ void print_string(char *str, unsigned char color)
 
 void main(void)
 {
-    /* TODO: Add random f-word here */
     terminal_buffer = (unsigned short *)VGA_ADDRESS;
     vga_index = 0;
 

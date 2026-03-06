@@ -14,7 +14,9 @@ start:
         cli                      ;block interrupts
         mov esp, stack_space     ;set stack pointer
         call main
+halt_loop:
         hlt                      ;halt the CPU
+        jmp halt_loop            ;spin if CPU wakes from NMI or other events
 
 section .bss
 resb 8192                        ;8KB for stack

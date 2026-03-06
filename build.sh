@@ -20,8 +20,14 @@ mkdir -p "$ISO_DIR/boot/grub"
 cp kernel "$ISO_DIR/boot/kernel"
 cp grub.cfg "$ISO_DIR/boot/grub/grub.cfg"
 
-echo "[5/6] Creating kernel.iso"
+echo "[5/6] Validating kernel Multiboot format"
+if ! grub-file --is-x86-multiboot "$ISO_DIR/boot/kernel"; then
+    echo "ERROR: kernel is not multiboot compatible"
+    exit 1
+fi
+
+echo "[6/6] Creating kernel.iso"
 grub-mkrescue -o "$OUTPUT_ISO" "$ISO_DIR"
 
-echo "[6/6] Done"
+echo "[7/7] Done"
 ls -lh "$OUTPUT_ISO"
