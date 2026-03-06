@@ -66,14 +66,14 @@ Then run:
 
 This PowerShell wrapper calls WSL to execute the Linux build script (`./build.sh`) in your WSL environment, assembles and links the kernel, and generates `kernel.iso`.
 
-### Fallback for older Windows
+### Fallback for older Windows 
 
 If `wsl --install` is unavailable, manually enable WSL:
 1. Open **Settings** > **Apps** > **Optional features** (or search "Turn Windows features on or off")
 2. Enable **Windows Subsystem for Linux**
 3. Restart your computer
-4. Then run `wsl --install -d Debian` in PowerShell as Administrator
-
+4. Install Debian from the **Microsoft Store**, or download and install manually from [Microsoft's WSL documentation](https://learn.microsoft.com/en-us/windows/wsl/install-manual)
+5. Launch Debian from the Start menu to complete the initial setup
 ## Important
 
 Do not paste xorriso output lines back into the shell. Lines like `Drive current:`, `Media status:`, or `Written to medium:` are output text, not commands.
