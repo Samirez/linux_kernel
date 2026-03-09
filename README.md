@@ -78,7 +78,7 @@ Then run the build:
 ```
 
 This PowerShell wrapper calls WSL to execute the Linux build script (`./build.sh`) in your WSL environment, assembles and links the kernel, and generates `kernel.iso`.
-
+ 
 ### Fallback for older Windows 
 
 If `wsl --install` is unavailable, manually enable WSL:

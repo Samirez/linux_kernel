@@ -10,6 +10,10 @@
 unsigned short *terminal_buffer;
 unsigned int vga_index;
 
+struct dirent {
+    char   d_name[];
+};
+
 void clear_screen(void)
 {
     int index = 0;
@@ -31,14 +35,22 @@ void print_string(char *str, unsigned char color)
     }
 }
 
+void _ls(const char *dir, int op_a, int op_l)
+{
+    
+    char* dir = opendir(dir);
+    print("Directory: %s\n", dir);
+}
+
 void main(void)
 {
     terminal_buffer = (unsigned short *)VGA_ADDRESS;
     vga_index = 0;
 
     clear_screen();
+    _ls("/", 0, 0);
     print_string("Hello from Linux Journal!", YELLOW);
-    vga_index = 80;    /* next line */
+    vga_index = 80;    /* next line */ 
     print_string("Goodbye from Linux Journal!", RED);
     return;
 }
